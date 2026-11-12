@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GEoglifos del Santuario | Moquegua</title>
+
+<style>
+:root {
+    --arena: #e9dfc9;
+    --arena-claro: #f7f3e9;
+    --oliva: #526344;
+    --oliva-oscuro: #283c2d;
+    --terracota: #b66c4b;
+    --blanco: #ffffff;
+    --texto: #333b30;
+    --gris: #77796d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--arena-claro);
+    color: var(--texto);
+    line-height: 1.7;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+section {
+    padding: 100px 8%;
+    scroll-margin-top: 75px;
+}
+
+.contenedor {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.etiqueta {
+    color: var(--terracota);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.titulo {
+    font-family: Georgia, serif;
+    font-size: clamp(32px, 5vw, 48px);
+    color: var(--oliva-oscuro);
+    margin: 10px 0 20px;
+    line-height: 1.2;
+}
+
+.descripcion {
+    max-width: 750px;
+    color: var(--gris);
+    font-size: 16px;
+}
+
+/* NAVEGACIÓN */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(40, 60, 45, .96);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 3px 15px #0002;
+}
+
+.navbar {
+    max-width: 1300px;
+    margin: auto;
+    padding: 15px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-family: Georgia, serif;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #d6a17c;
+}
+
+.menu {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.menu a {
+    color: white;
+    font-size: 13px;
+    transition: .3s;
+}
+
+.menu a:hover {
+    color: #d6a17c;
+}
+
+.menu-btn {
+    display: none;
+    color: white;
+    background: none;
+    border: none;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+/* PORTADA */
+
+.hero {
+    min-height: 100vh;
+    padding: 150px 8% 80px;
+    display: flex;
+    align-items: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    background: var(--oliva-oscuro);
+}
+
+.hero-fondo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .38;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(25,43,31,.95),
+        rgba(25,43,31,.35)
+    );
+}
+
+.hero-contenido {
+    max-width: 850px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero .etiqueta {
+    color: #e5b18a;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(45px, 8vw, 85px);
+    line-height: 1.05;
+    margin: 20px 0;
+}
+
+.hero h1 span {
+    color: #d6a17c;
+}
+
+.hero p {
+    max-width: 620px;
+    font-size: 18px;
+    color: #eee8dc;
+    margin-bottom: 30px;
+}
+
+.boton {
+    display: inline-block;
+    background: var(--terracota);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: .3s;
+    border: 1px solid transparent;
+}
+
+.boton:hover {
+    background: #94543c;
+    transform: translateY(-4px);
+}
+
+.hero-nota {
+    margin-top: 55px;
+    color: #d8d4c9;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* IMÁGENES Y VIDEOS */
+
+.foto {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.foto-proyecto {
+    height: 350px;
+}
+
+.foto-geoglifos {
+    height: 350px;
+}
+
+.foto-collage {
+    height: 350px;
+}
+
+.foto-qr {
+    max-width: 220px;
+    height: auto;
+    margin: 20px auto 0;
+}
+
+.video {
+    width: 100%;
+    display: block;
+    background: #19291e;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.video-galeria {
+    height: 280px;
+}
+
+/* PROYECTO */
+
+.proyecto {
+    background: var(--arena-claro);
+}
+
+.dos-columnas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 55px;
+    align-items: center;
+}
+
+.proyecto-texto p {
+    margin-bottom: 17px;
+}
+
+.dato {
+    background: white;
+    padding: 25px;
+    border-left: 4px solid var(--terracota);
+    margin-top: 25px;
+    border-radius: 5px;
+}
+
+.dato strong {
+    color: var(--oliva);
+}
+
+/* INTEGRANTES */
+
+.integrantes {
+    background: var(--oliva-oscuro);
+    color: white;
+}
+
+.integrantes .titulo {
+    color: white;
+}
+
+.integrantes .descripcion {
+    color: #d5d9cf;
+}
+
+.integrantes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.integrante {
+    background: #ffffff10;
+    border: 1px solid #ffffff20;
+    padding: 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.integrante:hover {
+    background: #ffffff20;
+    transform: translateY(-5px);
+}
+
+.integrante span {
+    color: #d6a17c;
+    font-size: 11px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* GEOGLIFOS */
+
+.geoglifos {
+    background: var(--arena);
+}
+
+.sectores {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.sector {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    border-bottom: 4px solid var(--oliva);
+    transition: .3s;
+}
+
+.sector:hover {
+    transform: translateY(-6px);
+}
+
+.sector h3 {
+    color: var(--terracota);
+    font-family: Georgia, serif;
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.curiosidad {
+    margin-top: 30px;
+    background: var(--oliva-oscuro);
+    color: white;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.curiosidad h3 {
+    color: #e7b28b;
+    margin-bottom: 10px;
+}
+
+.dato-arqueologico {
+    margin-top: 30px;
+    background: #ffffffa8;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+/* AVENTURA */
+
+.aventura {
+    background: white;
+}
+
+.frase {
+    margin: 30px 0;
+    padding: 25px;
+    border-left: 4px solid var(--terracota);
+    background: var(--arena-claro);
+    color: var(--oliva-oscuro);
+    font-family: Georgia, serif;
+    font-size: 23px;
+    font-style: italic;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 35px;
+}
+
+.galeria-item {
+    overflow: hidden;
+    border-radius: 8px;
+    background: var(--arena);
+}
+
+.galeria-item video,
+.galeria-item img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+}
+
+.galeria-item p {
+    padding: 15px;
+    font-weight: bold;
+    color: var(--oliva-oscuro);
+}
+
+/* PUBLICACIONES */
+
+.publicaciones {
+    background: var(--arena);
+}
+
+.publicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.red-social {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.red-social:hover {
+    transform: translateY(-5px);
+}
+
+.red-social h3 {
+    font-size: 25px;
+    color: var(--oliva-oscuro);
+    margin-bottom: 10px;
+}
+
+.red-social p {
+    color: var(--gris);
+    margin-bottom: 20px;
+}
+
+.facebook {
+    background: #315c99;
+}
+
+.tiktok {
+    background: #202020;
+}
+
+/* REFLEXIÓN */
+
+.reflexion {
+    background: var(--oliva-oscuro);
+    text-align: center;
+    color: white;
+}
+
+.reflexion .titulo {
+    color: white;
+}
+
+.reflexion .descripcion {
+    color: #e1e2d9;
+    margin: auto;
+}
+
+.reflexion-final {
+    font-family: Georgia, serif;
+    font-size: clamp(23px, 4vw, 34px);
+    color: #e7b28b;
+    max-width: 850px;
+    margin: 40px auto 0;
+    line-height: 1.5;
+}
+
+/* PIE DE PÁGINA */
+
+footer {
+    background: #19291e;
+    color: #ddd;
+    padding: 50px 8% 25px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+}
+
+footer h3 {
+    color: #d6a17c;
+    margin-bottom: 15px;
+    font-family: Georgia, serif;
+}
+
+footer p {
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #ffffff20;
+    margin-top: 35px;
+    padding-top: 20px;
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* ANIMACIONES */
+
+.revelar {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.revelar.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* INTERACTIVIDAD EXTRA */
+#barraProgreso {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: #d6a17c;
+    z-index: 2000;
+    transition: width .12s linear;
+}
+.menu a.activo { color: #e7b28b; border-bottom: 2px solid #e7b28b; padding-bottom: 5px; }
+.boton-secundario {
+    display: inline-block;
+    border: 1px solid var(--oliva);
+    color: var(--oliva-oscuro);
+    background: transparent;
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .25s;
+}
+.boton-secundario:hover { background: var(--oliva); color: white; }
+.detalle-interactivo {
+    background: #fff;
+    border-radius: 8px;
+    margin-top: 14px;
+    padding: 18px 22px;
+    border: 1px solid #d8cfbb;
+}
+.detalle-interactivo summary {
+    color: var(--oliva-oscuro);
+    font-weight: 700;
+    cursor: pointer;
+}
+.detalle-interactivo p { margin-top: 12px; color: var(--gris); }
+.quiz {
+    margin-top: 38px;
+    padding: 30px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 12px 35px #283c2d12;
+}
+.quiz h3 { color: var(--oliva-oscuro); font: 26px Georgia,serif; margin-bottom: 8px; }
+.quiz-pregunta { margin: 18px 0 12px; font-weight: 700; }
+.quiz-opciones { display: flex; flex-wrap: wrap; gap: 10px; }
+.quiz-opciones button {
+    border: 1px solid #c9c1ae;
+    background: var(--arena-claro);
+    color: var(--texto);
+    border-radius: 6px;
+    padding: 11px 16px;
+    cursor: pointer;
+    transition: .2s;
+}
+.quiz-opciones button:hover { border-color: var(--oliva); transform: translateY(-2px); }
+.quiz-opciones button:disabled { cursor: default; opacity: .8; }
+.quiz-resultado { min-height: 28px; margin-top: 14px; font-weight: 700; color: var(--oliva); }
+.quiz-controles { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-top:20px; }
+#volverArriba {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 900;
+    width: 46px;
+    height: 46px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--terracota);
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 5px 18px #0003;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: .25s;
+}
+#volverArriba.mostrar { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.video-geoglifos { width:100%; height:350px; display:block; object-fit:cover; background:#19291e; border-radius:10px; box-shadow:0 15px 35px #283c2d22; }
+.etiqueta-video { margin-top:10px; color:var(--gris); font-size:13px; }
+
+/* RESPONSIVE */
+
+@media(max-width: 850px) {
+
+    .menu {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: var(--oliva-oscuro);
+        flex-direction: column;
+        padding: 25px 8%;
+        gap: 18px;
+    }
+
+    .menu.activo {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .dos-columnas {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .integrantes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sectores,
+    .publicaciones-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 550px) {
+
+    section {
+        padding: 75px 6%;
+    }
+
+    .hero {
+        padding: 130px 7% 70px;
+    }
+
+    .hero h1 {
+        font-size: 47px;
+    }
+
+    .integrantes-grid,
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+
+    .galeria-item video,
+    .galeria-item img {
+        height: 230px;
+    }
+}
+</style>
+</head>
+
+<body>
+<div id="barraProgreso" aria-hidden="true"></div>
+
+<!-- =================================
+     NAVEGACIÓN
+================================= -->
+
+<header>
+<nav class="navbar">
+
+    <a href="#inicio" class="logo">
+        GE<span>oglifos</span>
+    </a>
+
+    <button class="menu-btn" id="menuBtn"
+    aria-label="Abrir menú" aria-expanded="false">
+        ☰
+    </button>
+
+    <ul class="menu" id="menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#proyecto">Proyecto</a></li>
+        <li><a href="#geoglifos">Geoglifos</a></li>
+        <li><a href="#aventura">Nuestra aventura</a></li>
+        <li><a href="#quiz">Mini reto</a></li>
+        <li><a href="#publicaciones">Publicaciones</a></li>
+        <li><a href="#reflexion">Reflexión</a></li>
+    </ul>
+
+</nav>
+</header>
+
+
+<!-- =================================
+     PORTADA
+================================= -->
+
+<section class="hero" id="inicio">
+
+    <!-- #aqui va tu imagen-------------------------------------------------------------- -->
+    <img class="hero-fondo"
+         src="img3.jpeg"
+         alt="Paisaje de los Geoglifos del Santuario">
+
+    <div class="hero-contenido revelar">
+
+        <span class="etiqueta">
+            Patrimonio cultural de Moquegua
+        </span>
+
+        <h1>
+            GEoglifos<br>
+            <span>del Santuario</span>
+        </h1>
+
+        <p>
+            «Descubriendo las huellas de nuestro pasado».
+            Un viaje para conocer, valorar y proteger uno
+            de los tesoros arqueológicos de nuestra región.
+        </p>
+
+        <a href="#proyecto" class="boton">
+            CONOCE NUESTRA AVENTURA →
+        </a>
+
+        <div class="hero-nota">
+            MOQUEGUA · PERÚ · 2026
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     PROYECTO
+================================= -->
+
+<section class="proyecto" id="proyecto">
+
+<div class="contenedor dos-columnas">
+
+    <div class="proyecto-texto revelar">
+
+        <span class="etiqueta">El comienzo de nuestra historia</span>
+
+        <h2 class="titulo">¿Cómo comenzó todo?</h2>
+
+        <p>
+            Todo comenzó con nuestro proyecto
+            <strong>«Valoramos y salvaguardamos nuestra identidad:
+            Embajadores del Patrimonio Cultural de Moquegua».</strong>
+        </p>
+
+        <p>
+            Como estudiantes del 5.º B de secundaria de la
+            I.E. Coronel Manuel Camilo de la Torre, junto a nuestro
+            profesor Javier Choque, buscamos conocer aquellos
+            lugares de nuestra región que, a pesar de su valor
+            histórico, no reciben suficiente reconocimiento.
+        </p>
+
+        <p>
+            Para comenzar nuestra investigación, acudimos al
+            Ministerio de Cultura de Moquegua, donde recibimos
+            orientación y descubrimos los Geoglifos del Santuario.
+        </p>
+
+        <div class="dato">
+            <strong>Nuestra misión:</strong>
+            Conocer nuestro patrimonio para aprender a valorarlo,
+            compartirlo y protegerlo.
+        </div>
+
+    </div>
+
+    <div class="revelar">
+
+        <!-- #aqui va tu imagen-------------------------------------------------------------- -->
+        <img class="foto foto-proyecto"
+             src="img1.jpeg"
+             alt="Estudiantes durante el proyecto">
+
+    </div>
+
+</div>
+</section>
+
+
+<!-- =================================
+     INTEGRANTES
+================================= -->
+
+<section class="integrantes">
+
+<div class="contenedor">
+
+    <div class="revelar">
+        <span class="etiqueta">Nuestro equipo</span>
+
+        <h2 class="titulo">Los embajadores del patrimonio</h2>
+
+        <p class="descripcion">
+            Somos estudiantes comprometidos con la investigación,
+            difusión y protección de nuestra identidad cultural.
+        </p>
+    </div>
+
+    <div class="integrantes-grid revelar">
+
+        <div class="integrante">
+            <span>INTEGRANTE 01</span>
+            POLINAR CORI XIMENA VICTORIA
+        </div>
+
+        <div class="integrante">
+            <span>INTEGRANTE 02</span>
+            HANCCO POMA PALOMA VALENTINA
+        </div>
+
+        <div class="integrante">
+            <span>INTEGRANTE 03</span>
+            LUIS LATEROS DANIELA MILAGROS
+        </div>
+
+        <div class="integrante">
+            <span>INTEGRANTE 04</span>
+            PEREZ HUARACHE SHERYL YAMILETH
+        </div>
+
+        <div class="integrante">
+            <span>INTEGRANTE 05</span>
+            SALAS RAMOS MAGDYEL
+        </div>
+
+        <div class="integrante">
+            <span>INTEGRANTE 06</span>
+            CAHUI FLORES MARY CANDY
+        </div>
+
+        <div class="integrante">
+            <span>INTEGRANTE 07</span>
+            HUANCA PARI FIORELA MELANIA
+        </div>
+
+        <div class="integrante">
+            <span>INTEGRANTE 08</span>
+            TICONA FELIPE YEREMY NIEL
+        </div>
+
+        <div class="integrante">
+            <span>INTEGRANTE 09</span>
+            FLORES HUALPA JOSUE DALI
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<!-- =================================
+     GEOGLIFOS
+================================= -->
+
+<section class="geoglifos" id="geoglifos">
+
+<div class="contenedor">
+
+    <div class="revelar">
+
+        <span class="etiqueta">Un tesoro arqueológico</span>
+
+        <h2 class="titulo">Geoglifos del Santuario</h2>
+
+        <p class="descripcion">
+            Un conjunto de representaciones arqueológicas
+            que forman parte de la riqueza histórica de Moquegua.
+        </p>
+
+    </div>
+
+    <div class="dos-columnas" style="margin-top:35px;">
+
+        <div class="revelar">
+
+            <h3 style="color:var(--oliva);margin-bottom:12px;">
+                ¿Dónde se encuentran?
+            </h3>
+
+            <p>
+                Están ubicados en el sector Tres Quebradas,
+                provincia de Mariscal Nieto, región Moquegua.
+            </p>
+
+            <br>
+
+            <p>
+                Este conjunto destaca por sus representaciones
+                de camélidos y diseños realizados directamente
+                sobre la superficie del terreno.
+            </p>
+
+            <div class="dato-arqueologico">
+                <strong>¿Qué son los geoglifos?</strong>
+                <p>
+                    Son figuras o diseños de grandes dimensiones
+                    elaborados sobre el terreno mediante la
+                    modificación de su superficie.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="revelar">
+
+            <!-- #aqui va tu imagen-------------------------------------------------------------- -->
+        <img class="foto foto-proyecto"
+             src="img3.jpeg"
+             alt="Estudiantes durante el proyecto">
+            </video>
+            <p class="etiqueta-video">Video principal · Geoglifos del Santuario, sector Tres Quebradas</p>
+
+        </div>
+
+    </div>
+
+    <h2 class="titulo" style="font-size:32px;margin-top:60px;">
+        Sus dos sectores
+    </h2>
+
+    <div class="sectores revelar">
+
+        <article class="sector">
+
+            <h3>SECTOR A</h3>
+
+            <p>
+                Presenta figuras pequeñas de camélidos y
+                diseños geométricos, ubicados sobre una
+                ladera poco pronunciada.
+            </p>
+
+        </article>
+
+        <article class="sector">
+
+            <h3>SECTOR B</h3>
+
+            <p>
+                Contiene figuras de camélidos de mayor tamaño
+                y está asociado al sitio arqueológico M 72 A,
+                donde existen evidencias de habitaciones
+                relacionadas con la cultura Tiwanaku.
+            </p>
+
+        </article>
+
+    </div>
+
+    <details class="detalle-interactivo revelar">
+        <summary>¿Cómo se elaboraban los geoglifos?</summary>
+        <p>Entre las técnicas utilizadas para crear geoglifos se encuentran la técnica extractiva o de raspado, que retira materiales de la superficie, y la técnica aditiva, que coloca materiales para formar el diseño. La ficha histórica consultada para esta investigación registra figuras de camélidos realizadas mediante la técnica extractiva.</p>
+    </details>
+
+    <details class="detalle-interactivo revelar">
+        <summary>¿Por qué debemos proteger este lugar?</summary>
+        <p>La intervención humana y la habilitación de terrenos agrícolas pueden afectar estas figuras. También es importante prevenir el tránsito inadecuado, la contaminación y el huaqueo, promoviendo visitas responsables y el respeto por el patrimonio.</p>
+    </details>
+
+    <div class="curiosidad revelar">
+
+        <h3>¿Sabías que...?</h3>
+
+        <p>
+            Su estado de conservación ha sido descrito como
+            regular debido a la intervención humana y a los
+            intentos de habilitar terrenos para actividades
+            agrícolas.
+        </p>
+
+    </div>
+
+    <div class="dato-arqueologico revelar">
+
+        <strong>Un dato de nuestra investigación:</strong>
+
+        <p>
+            Una ficha de inventario incluida en una tesis de
+            la Universidad Católica de Santa María, publicada
+            en 2013, registra tres figuras de camélidos de
+            grandes dimensiones elaboradas mediante la técnica
+            extractiva o de raspado.
+        </p>
+
+        <p style="margin-top:10px;">
+            Estas evidencias permiten conocer mejor el lugar,
+            aunque su significado necesita continuar siendo
+            estudiado.
+        </p>
+
+    </div>
+
+    <div class="quiz revelar" id="quiz">
+        <span class="etiqueta">Pon a prueba lo aprendido</span>
+        <h3>Mini reto: ¿Cuánto recuerdas?</h3>
+        <p>Responde estas preguntas sobre los Geoglifos del Santuario. ¡Al final verás tu resultado!</p>
+        <div class="quiz-pregunta" id="quizPregunta">Pregunta 1 de 3: ¿En qué sector se encuentran los Geoglifos del Santuario?</div>
+        <div class="quiz-opciones" id="quizOpciones">
+            <button type="button" data-correcta="false">Chen Chen</button>
+            <button type="button" data-correcta="true">Tres Quebradas</button>
+            <button type="button" data-correcta="false">Cerro Baúl</button>
+        </div>
+        <div class="quiz-resultado" id="quizResultado" aria-live="polite">Selecciona una respuesta.</div>
+        <div class="quiz-controles">
+            <span id="quizPuntaje">Puntaje: 0 / 3</span>
+            <button class="boton-secundario" type="button" id="quizSiguiente" disabled>Siguiente pregunta →</button>
+            <button class="boton-secundario" type="button" id="quizReiniciar" hidden>Volver a intentar</button>
+        </div>
+    </div>
+
+</div>
+</section>
+
+
+<!-- =================================
+     NUESTRA AVENTURA
+================================= -->
+
+<section class="aventura" id="aventura">
+
+<div class="contenedor">
+
+    <div class="revelar">
+
+        <span class="etiqueta">Nuestra experiencia</span>
+
+        <h2 class="titulo">¡Así fue nuestra aventura!</h2>
+
+        <p class="descripcion">
+            Una experiencia que nos permitió acercarnos
+            a nuestra historia y comprender por qué
+            debemos protegerla.
+        </p>
+
+    </div>
+
+    <div class="frase revelar">
+        «Cada recorrido nos acerca más a nuestra identidad».
+    </div>
+
+    <p class="revelar">
+        Llegar hasta este lugar fue mucho más que una visita.
+        Fue una oportunidad para descubrir, aprender y
+        compartir como compañeros. Entre paisajes, curiosidad
+        y nuevos conocimientos, vivimos una experiencia
+        inolvidable.
+    </p>
+
+    <div class="galeria">
+
+        <!-- VIDEO 1: NUESTRO RECORRIDO -->
+
+        <div class="galeria-item revelar">
+
+            <!-- #aqui va tu video-------------------------------------------------------------- -->
+            <video class="video video-galeria"
+                   controls
+                   playsinline
+                   preload="metadata">
+
+                <source src="v3.mp4"
+                        type="video/mp4">
+
+                Tu navegador no puede reproducir este video.
+
+            </video>
+
+            <p>01 · NUESTRO RECORRIDO</p>
+
+        </div>
+
+
+        <!-- VIDEO 2: TRES QUEBRADAS -->
+
+        <div class="galeria-item revelar">
+
+            <!-- #aqui va tu video-------------------------------------------------------------- -->
+            <video class="video video-galeria"
+                   controls
+                   playsinline
+                   preload="metadata">
+
+                <source src="vid1.mp4"
+                        type="video/mp4">
+
+                Tu navegador no puede reproducir este video.
+
+            </video>
+
+            <p>02 · TRES QUEBRADAS</p>
+
+        </div>
+
+
+        <!-- IMAGEN 3: NUESTRO GRUPO -->
+
+        <div class="galeria-item revelar">
+
+            <!-- #aqui va tu video-------------------------------------------------------------- -->
+            <video class="video video-galeria"
+                   controls
+                   playsinline
+                   preload="metadata">
+
+                <source src="v2.mp4"
+                        type="video/mp4">
+
+                Tu navegador no puede reproducir este video.
+
+            </video>
+
+            <p>03 · NUESTRO GRUPO</p>
+
+        </div>
+
+
+        <!-- IMAGEN 4: EXPLORANDO EL SECTOR -->
+
+        <div class="galeria-item revelar">
+
+            <!-- #aqui va tu imagen-------------------------------------------------------------- -->
+            <img class="foto"
+                 src="img2.jpeg"
+                 alt="Exploración de los Geoglifos del Santuario">
+
+            <p>04 · EXPLORANDO EL SECTOR</p>
+
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<!-- =================================
+     PUBLICACIONES
+================================= -->
+
+<section class="publicaciones" id="publicaciones">
+
+<div class="contenedor">
+
+    <div class="revelar">
+
+        <span class="etiqueta">Compartimos lo aprendido</span>
+
+        <h2 class="titulo">¡Compartimos nuestra experiencia!</h2>
+
+        <p class="descripcion">
+            No quisimos quedarnos solo con lo aprendido.
+            Queríamos que más personas conocieran este patrimonio.
+        </p>
+
+        <br>
+
+        <p>
+            Realizamos un collage informativo público en nuestro
+            colegio y compartimos nuestra aventura en redes
+            sociales para despertar el interés por nuestra cultura.
+        </p>
+
+    </div>
+
+    <div class="revelar" style="margin-top:35px;">
+
+        <!-- #aqui va tu imagen-------------------------------------------------------------- -->
+        <img class="foto foto-collage"
+             src="imagenes/collage.jpg"
+             alt="Collage informativo realizado en el colegio">
+
+    </div>
+
+    <h2 class="titulo" style="font-size:30px;margin-top:55px;">
+        Nuestras publicaciones
+    </h2>
+
+    <div class="publicaciones-grid revelar">
+
+        <article class="red-social">
+
+            <h3>FACEBOOK</h3>
+
+            <p>
+                Conoce nuestra experiencia y descubre
+                el trabajo que realizamos.
+            </p>
+
+            <!-- REEMPLAZA # POR EL ENLACE REAL DE FACEBOOK -->
+
+            <a class="boton facebook"
+               href="#"
+               target="_blank"
+               rel="noopener noreferrer"
+               data-red="Facebook">
+
+                VER PUBLICACIÓN →
+
+            </a>
+
+        </article>
+
+        <article class="red-social">
+
+            <h3>TIKTOK</h3>
+
+            <p>
+                ¡Acompáñanos en nuestra aventura!
+                Mira nuestro recorrido y descubre
+                este tesoro de Moquegua.
+            </p>
+
+            <!-- REEMPLAZA # POR EL ENLACE REAL DE TIKTOK -->
+
+            <a class="boton tiktok"
+               href="https://www.tiktok.com/@nxsvtx"
+               target="_blank"
+               rel="noopener noreferrer"
+               data-red="TikTok">
+
+                VER PUBLICACIÓN →
+
+            </a>
+
+        </article>
+
+    </div>
+
+    <div class="dato-arqueologico revelar">
+
+        <strong>También elaboramos un documental:</strong>
+
+        <p>
+            Nuestro trabajo incluye un documental al que
+            se podrá acceder mediante un código QR.
+            Así podremos compartir nuestra investigación
+            con más estudiantes y visitantes.
+        </p>
+
+        <div style="text-align:center;">
+
+            <!-- #aqui va tu imagen-------------------------------------------------------------- -->
+            <img class="foto foto-qr"
+                 src="imagenes/codigo-qr.png"
+                 alt="Código QR para acceder al documental">
+
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<!-- =================================
+     REFLEXIÓN FINAL
+================================= -->
+
+<section class="reflexion" id="reflexion">
+
+<div class="contenedor revelar">
+
+    <span class="etiqueta">Nuestra reflexión final</span>
+
+    <h2 class="titulo">
+        ¡Moquegua tiene mucho por descubrir!
+    </h2>
+
+    <p class="descripcion">
+
+        Esta aventura nos enseñó que no necesitamos ir lejos
+        para encontrar lugares llenos de historia. Muchas veces,
+        los mayores tesoros están en nuestra propia región,
+        esperando ser descubiertos.
+
+        <br><br>
+
+        Invitamos a todos los moqueguanos a conocer, valorar
+        y proteger los Geoglifos del Santuario y los demás
+        espacios culturales que forman parte de nuestra identidad.
+
+        <br><br>
+
+        No dejemos que nuestra historia quede en el olvido.
+        Conocer nuestro patrimonio es el primer paso para protegerlo.
+
+    </p>
+
+    <div class="reflexion-final">
+
+        «No podemos proteger aquello que no conocemos.
+        ¡Seamos embajadores de nuestro patrimonio cultural!»
+
+    </div>
+
+</div>
+</section>
+
+
+<!-- =================================
+     PIE DE PÁGINA
+================================= -->
+
+<footer>
+
+<div class="contenedor">
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h3>GEoglifos del Santuario</h3>
+
+            <p>
+                Proyecto: Valoramos y salvaguardamos nuestra
+                identidad: Embajadores del Patrimonio Cultural
+                de Moquegua.
+            </p>
+
+            <p>Moquegua – Perú · 2026</p>
+
+        </div>
+
+        <div>
+
+            <h3>Información académica</h3>
+
+            <p>
+                <strong>Institución:</strong>
+                Coronel Manuel Camilo de la Torre
+            </p>
+
+            <p>
+                <strong>Grado y sección:</strong>
+                5.º B de secundaria
+            </p>
+
+            <p>
+                <strong>Área:</strong>
+                Desarrollo Personal, Ciudadanía y Cívica (DPCC)
+            </p>
+
+            <p>
+                <strong>Docente:</strong>
+                Javier Choque
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="copyright">
+
+        © 2026 · Proyecto escolar de patrimonio cultural
+        · Moquegua, Perú.
+
+    </div>
+
+</div>
+
+</footer>
+
+
+<button id="volverArriba" type="button" aria-label="Volver arriba" title="Volver arriba">↑</button>
+
+<!-- =================================
+     JAVASCRIPT
+================================= -->
+
+<script>
+
+// MENÚ PARA CELULARES
+
+const menuBtn = document.getElementById("menuBtn");
+const menu = document.getElementById("menu");
+
+menuBtn.addEventListener("click", () => {
+
+    const abierto = menu.classList.toggle("activo");
+
+    menuBtn.setAttribute("aria-expanded", abierto);
+    menuBtn.textContent = abierto ? "✕" : "☰";
+
+});
+
+
+// CERRAR MENÚ AL SELECCIONAR UNA SECCIÓN
+
+document.querySelectorAll(".menu a").forEach(enlace => {
+
+    enlace.addEventListener("click", () => {
+
+        menu.classList.remove("activo");
+        menuBtn.textContent = "☰";
+        menuBtn.setAttribute("aria-expanded", "false");
+
+    });
+
+});
+
+
+// ANIMACIONES AL DESPLAZARSE
+
+const observador = new IntersectionObserver((elementos) => {
+
+    elementos.forEach(elemento => {
+
+        if (elemento.isIntersecting) {
+
+            elemento.target.classList.add("visible");
+            observador.unobserve(elemento.target);
+
+        }
+
+    });
+
+}, {
+    threshold: 0.12
+});
+
+document.querySelectorAll(".revelar").forEach(elemento => {
+
+    observador.observe(elemento);
+
+});
+
+
+// AVISO PARA COLOCAR LOS ENLACES REALES
+
+document.querySelectorAll("[data-red]").forEach(boton => {
+
+    boton.addEventListener("click", (evento) => {
+
+        if (boton.getAttribute("href") === "#") {
+
+            evento.preventDefault();
+
+            alert(
+                "Todavía falta colocar el enlace real de " +
+                boton.dataset.red +
+                ". Edita el atributo href en el código HTML."
+            );
+
+        }
+
+    });
+
+});
+
+
+
+// BARRA DE PROGRESO, NAVEGACIÓN ACTIVA Y BOTÓN VOLVER ARRIBA
+const barraProgreso = document.getElementById("barraProgreso");
+const botonArriba = document.getElementById("volverArriba");
+const secciones = document.querySelectorAll("body section[id]");
+const enlacesMenu = document.querySelectorAll('.menu a[href^="#"]');
+
+function actualizarLectura() {
+    const recorrido = document.documentElement.scrollHeight - window.innerHeight;
+    const avance = recorrido > 0 ? (window.scrollY / recorrido) * 100 : 0;
+    barraProgreso.style.width = avance + "%";
+    botonArriba.classList.toggle("mostrar", window.scrollY > 450);
+
+    let actual = "";
+    secciones.forEach(seccion => {
+        if (window.scrollY >= seccion.offsetTop - 160) actual = seccion.id;
+    });
+    enlacesMenu.forEach(enlace => {
+        enlace.classList.toggle("activo", enlace.getAttribute("href") === "#" + actual);
+    });
+}
+window.addEventListener("scroll", actualizarLectura);
+actualizarLectura();
+
+botonArriba.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// MINI CUESTIONARIO INTERACTIVO
+const preguntasQuiz = [
+    {
+        pregunta: "Pregunta 1 de 3: ¿En qué sector se encuentran los Geoglifos del Santuario?",
+        opciones: ["Chen Chen", "Tres Quebradas", "Cerro Baúl"],
+        correcta: 1,
+        explicacion: "¡Correcto! Se ubican en el sector Tres Quebradas, provincia de Mariscal Nieto."
+    },
+    {
+        pregunta: "Pregunta 2 de 3: ¿Qué figuras destacan en sus representaciones?",
+        opciones: ["Camélidos", "Barcos", "Edificios modernos"],
+        correcta: 0,
+        explicacion: "¡Muy bien! Entre sus diseños destacan las representaciones de camélidos."
+    },
+    {
+        pregunta: "Pregunta 3 de 3: ¿Qué acción ayuda a conservarlos?",
+        opciones: ["Caminar sobre las figuras", "Extraer piedras", "Respetar el sitio y evitar dañarlo"],
+        correcta: 2,
+        explicacion: "¡Exacto! Debemos respetar el lugar y evitar cualquier intervención que dañe el patrimonio."
+    }
+];
+
+let preguntaActual = 0;
+let puntajeQuiz = 0;
+let respondida = false;
+
+const preguntaTexto = document.getElementById("quizPregunta");
+const opcionesQuiz = document.getElementById("quizOpciones");
+const resultadoQuiz = document.getElementById("quizResultado");
+const puntajeTexto = document.getElementById("quizPuntaje");
+const siguienteQuiz = document.getElementById("quizSiguiente");
+const reiniciarQuiz = document.getElementById("quizReiniciar");
+
+function mostrarPregunta() {
+    const pregunta = preguntasQuiz[preguntaActual];
+    preguntaTexto.textContent = pregunta.pregunta;
+    opcionesQuiz.innerHTML = "";
+    resultadoQuiz.textContent = "Selecciona una respuesta.";
+    respondida = false;
+    siguienteQuiz.disabled = true;
+    siguienteQuiz.hidden = false;
+    reiniciarQuiz.hidden = true;
+
+    pregunta.opciones.forEach((opcion, indice) => {
+        const boton = document.createElement("button");
+        boton.type = "button";
+        boton.textContent = opcion;
+        boton.addEventListener("click", () => comprobarRespuesta(indice, boton));
+        opcionesQuiz.appendChild(boton);
+    });
+    puntajeTexto.textContent = `Puntaje: ${puntajeQuiz} / 3`;
+}
+
+function comprobarRespuesta(indice, botonElegido) {
+    if (respondida) return;
+    respondida = true;
+    const pregunta = preguntasQuiz[preguntaActual];
+    const botones = opcionesQuiz.querySelectorAll("button");
+    botones.forEach((boton, i) => {
+        boton.disabled = true;
+        if (i === pregunta.correcta) {
+            boton.style.background = "#dce8d4";
+            boton.style.borderColor = "#526344";
+        }
+    });
+
+    if (indice === pregunta.correcta) {
+        puntajeQuiz++;
+        resultadoQuiz.textContent = pregunta.explicacion;
+    } else {
+        resultadoQuiz.textContent = "Casi. " + pregunta.explicacion;
+        botonElegido.style.background = "#f2ded5";
+        botonElegido.style.borderColor = "#b66c4b";
+    }
+
+    puntajeTexto.textContent = `Puntaje: ${puntajeQuiz} / 3`;
+    siguienteQuiz.disabled = false;
+    siguienteQuiz.textContent = preguntaActual === 2 ? "Ver resultado" : "Siguiente pregunta →";
+}
+
+siguienteQuiz.addEventListener("click", () => {
+    if (!respondida) return;
+    if (preguntaActual < preguntasQuiz.length - 1) {
+        preguntaActual++;
+        mostrarPregunta();
+    } else {
+        preguntaTexto.textContent = "¡Reto completado!";
+        opcionesQuiz.innerHTML = "";
+        resultadoQuiz.textContent = puntajeQuiz === 3
+            ? "¡Excelente! Conoces muy bien este patrimonio. Sigue compartiendo lo aprendido."
+            : `Obtuviste ${puntajeQuiz} de 3 respuestas correctas. ¡Puedes volver a intentarlo y aprender más!`;
+        siguienteQuiz.hidden = true;
+        reiniciarQuiz.hidden = false;
+        puntajeTexto.textContent = `Resultado final: ${puntajeQuiz} / 3`;
+    }
+});
+
+reiniciarQuiz.addEventListener("click", () => {
+    preguntaActual = 0;
+    puntajeQuiz = 0;
+    mostrarPregunta();
+});
+
+mostrarPregunta();
+
+</script>
+
+</body>
+</html>
